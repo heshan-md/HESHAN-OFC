@@ -42,24 +42,24 @@ header p {
   color: var(--muted);
 }
 
-/* Main */
+/* Container */
 .container {
   max-width: 1100px;
   margin: auto;
   padding: 30px 20px;
 }
 
+/* Hero */
 .hero {
   background: linear-gradient(135deg, #0e1438, #06091c);
-  border-radius: 18px;
-  padding: 35px;
+  border-radius: 20px;
+  padding: 40px;
   text-align: center;
-  box-shadow: 0 0 40px #000;
+  box-shadow: 0 0 45px #000;
 }
 
 .hero h2 {
   font-size: 28px;
-  margin-bottom: 10px;
 }
 
 .hero span {
@@ -69,14 +69,52 @@ header p {
 .hero p {
   color: var(--muted);
   max-width: 600px;
-  margin: auto;
+  margin: 10px auto 0;
 }
 
-/* Buttons */
+/* 🔲 LOGO SECTION */
+.bot-logo {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.bot-logo img {
+  width: 260px;
+  height: 260px;
+  border-radius: 20px;
+  border: 3px solid var(--neon);
+  object-fit: cover;
+  background: #000;
+  box-shadow:
+    0 0 35px rgba(0,255,204,0.6),
+    inset 0 0 18px rgba(0,255,204,0.25);
+}
+
+/* Typing Animation */
+.typing {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--neon);
+  letter-spacing: 3px;
+  border-right: 3px solid var(--neon);
+  white-space: nowrap;
+  overflow: hidden;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%,50%,100% { border-color: var(--neon); }
+  25%,75% { border-color: transparent; }
+}
+
+/* Button */
 .btn {
   display: inline-block;
-  margin-top: 25px;
-  padding: 14px 30px;
+  margin-top: 28px;
+  padding: 15px 34px;
   border-radius: 50px;
   background: var(--neon);
   color: #000;
@@ -86,8 +124,25 @@ header p {
 }
 
 .btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px var(--neon);
+  transform: scale(1.06);
+  box-shadow: 0 0 25px var(--neon);
+}
+
+/* Status */
+.status {
+  margin-top: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: #00ff44;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00ff44;
 }
 
 /* Cards */
@@ -103,39 +158,10 @@ header p {
   padding: 25px;
   border-radius: 16px;
   border: 1px solid #151a44;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 25px #000;
 }
 
 .card h3 {
   color: var(--neon);
-  margin-bottom: 10px;
-}
-
-.card p {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-/* Status */
-.status {
-  margin-top: 20px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  background: #00ff44;
-  border-radius: 50%;
-  box-shadow: 0 0 10px #00ff44;
 }
 
 /* Footer */
@@ -158,48 +184,65 @@ footer {
 </header>
 
 <div class="container">
-
   <div class="hero">
-    <h2>Powerful <span>WhatsApp Bot</span></h2>
-    <p>Auto replies, AI chat, media tools, group control & more — built for speed and reliability.</p>
 
-    <a class="btn" href="https://wa.me/947XXXXXXXX" target="_blank">
+    <!-- LOGO TOP -->
+    <div class="bot-logo">
+      <img src="https://files.catbox.moe/v3drtp.jpg" alt="HESHAN MD Logo">
+      <div class="typing" id="typingText"></div>
+    </div>
+
+    <h2>Powerful <span>WhatsApp Bot</span></h2>
+    <p>Auto replies, AI chat, media tools, group control & more.</p>
+
+    <!-- BUTTON BELOW LOGO -->
+    <a class="btn" href="https://wa.me/94719845166" target="_blank">
       Connect WhatsApp Bot
     </a>
 
     <div class="status">
-      <div class="dot"></div>
-      Bot Status: Online
+      <div class="dot"></div> Bot Status: Online
     </div>
+
   </div>
 
   <div class="grid">
     <div class="card">
       <h3>🤖 AI Chat</h3>
-      <p>Smart Sinhala & English conversation support with fast replies.</p>
+      <p>Smart Sinhala & English conversation support.</p>
     </div>
-
     <div class="card">
       <h3>📥 Media Tools</h3>
       <p>Download videos, images & audio instantly.</p>
     </div>
-
     <div class="card">
       <h3>👥 Group Control</h3>
-      <p>Admin tools, auto moderation & commands.</p>
+      <p>Admin tools, moderation & automation.</p>
     </div>
-
     <div class="card">
       <h3>⚡ Fast & Secure</h3>
-      <p>Optimized performance with secure backend.</p>
+      <p>Optimized & secure backend system.</p>
     </div>
   </div>
-
 </div>
 
 <footer>
   © 2025 HESHAN MD • WhatsApp Bot Official Website
 </footer>
+
+<script>
+const text = "HESHAN MD";
+let i = 0;
+
+function typeEffect() {
+  if (i < text.length) {
+    document.getElementById("typingText").textContent += text.charAt(i);
+    i++;
+    setTimeout(typeEffect, 150);
+  }
+}
+window.onload = typeEffect;
+</script>
 
 </body>
 </html>
